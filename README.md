@@ -1,128 +1,168 @@
-# 📱 Eclipse IMEI - IMEI Tracking System
+# Eclipse IMEI - Device Tracking System
 
-**Eclipse IMEI** is a simple IMEI tracking web application that allows users to check, report, and manage lost or found mobile devices using their IMEI numbers. This system does **not use a database** but instead relies on structured data files (`data.json` & `data.csv`) to store IMEI records.
+Eclipse IMEI is a comprehensive device tracking system that allows users to report, search, and manage IMEI (International Mobile Equipment Identity) records for lost or found mobile devices. The system provides a secure and user-friendly interface for tracking mobile devices and helping users recover their lost devices.
 
-## 🚀 Features
-✅ **IMEI Lookup** – Check if a device is reported as lost or found  
-✅ **Report Lost/Found Devices** – Submit an IMEI to mark a phone as lost or found  
-✅ **No Database Required** – Uses JSON/CSV files instead of SQL databases  
-✅ **Admin Panel** – Manage IMEI records through a simple admin interface  
-✅ **Secure & Lightweight** – Basic security mechanisms to prevent abuse  
+## 🌟 Features
 
----
+### Core Functionality
+- **IMEI Search**: Check if a device has been reported as lost or found
+- **Device Reporting**: Report lost or found devices with detailed information
+- **Record Management**: View and manage all IMEI records in a user-friendly interface
+- **Status Tracking**: Track device status (active, lost, found, blocked)
+- **Detailed Device Information**: Store and display comprehensive device details
 
-## 📂 File Structure
+### Technical Features
+- **Responsive Design**: Fully responsive interface that works on all devices
+- **Real-time Search**: Instant search functionality across all records
+- **Advanced Filtering**: Filter records by status and other criteria
+- **Secure Database**: Protected storage of IMEI and device information
+- **Modern UI/UX**: Clean and intuitive user interface
 
-```
-Eclipse-IMEI/
-│── frontend/                 # Frontend files
-│   ├── index.html            # Homepage
-│   ├── search.html           # IMEI search page
-│   ├── report.html           # IMEI reporting page
-│   ├── about.html            # About page
-│   ├── contact.html          # Contact page
-│   ├── header.html           # Navigation header
-│   ├── footer.html           # Footer section
-│   ├── assets/               # Static assets
-│   │   ├── css/              # Stylesheets
-│   │   │   ├── styles.css    # Main styles
-│   │   ├── js/               # JavaScript files
-│   │   │   ├── scripts.js    # Main logic
-│   │   │   ├── config.js     # Configuration settings
-│
-│── backend/                  # Backend files
-│   ├── admin.php             # Admin panel
-│   ├── login.php             # Authentication system
-│   ├── manage-imei.php       # Manage IMEI records
-│   ├── check_imei.php        # Endpoint to check IMEI status
-│   ├── get_imei_list.php     # Fetch IMEI records
-│   ├── report_imei.php       # Report lost/found IMEI
-│   ├── logger.php            # Logs activities
-│   ├── security.php          # Security-related functions
-│
-│── data/                     # Data storage
-│   ├── data.json             # JSON file storing IMEI records
-│   ├── data.csv              # CSV file storing IMEI records
-│
-│── .gitignore                # Git ignore file
-│── LICENSE                   # License file
-│── README.md                 # Documentation
-```
+## 🛠️ Technology Stack
 
----
+### Frontend
+- HTML5
+- CSS3 (with modern features and variables)
+- JavaScript (ES6+)
+- DataTables for enhanced table functionality
+- Font Awesome for icons
 
-## ⚙️ Installation & Usage
+### Backend
+- PHP 7.4+
+- MySQL/MariaDB
+- PDO for secure database connections
+- RESTful API endpoints
 
-### 1️⃣ **Clone the Repository**
-```sh
-git clone https://github.com/yourusername/Eclipse-IMEI.git
-cd Eclipse-IMEI
-```
+## 📋 Prerequisites
 
-### 2️⃣ **Run a Local Server**
-Since this project contains PHP files, you need a local server like XAMPP, WAMP, or a simple built-in PHP server:
-```sh
-php -S localhost:8000
-```
-Now, visit `http://localhost:8000/frontend/index.html` in your browser.
+- Web server (Apache/Nginx)
+- PHP 7.4 or higher
+- MySQL 5.7 or MariaDB 10.3 or higher
+- Modern web browser with JavaScript enabled
 
-### 3️⃣ **Configure API Endpoints**
-Modify `config.js` to point to the correct backend URL:
-```js
-const config = {
-    apiBaseUrl: "http://localhost:8000/backend",
-};
-export default config;
-```
+## 🚀 Installation
 
----
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/eclipse-imei.git
+   cd eclipse-imei
+   ```
 
-## ✅ Usage
+2. **Database Setup**
+   - Create a new MySQL database
+   - Import the database schema from `database/schema.sql`
+   - Configure database connection in `backend/config.php`
 
-### ✅ **Checking an IMEI**
-1. Open `search.html`
-2. Enter a 15-digit IMEI number
-3. Click "Check IMEI"
-4. The system will return if the IMEI is **Lost** or **Found**
+3. **Configuration**
+   - Copy `backend/config.example.php` to `backend/config.php`
+   - Update database credentials and other settings
+   - Set appropriate file permissions
 
-### ✅ **Reporting a Lost or Found Phone**
-1. Open `report.html`
-2. Enter a 15-digit IMEI number
-3. Select **Lost** or **Found**
-4. Submit the form
+4. **Web Server Configuration**
+   - Point your web server to the `frontend` directory
+   - Ensure PHP files in the `backend` directory are accessible
+   - Configure URL rewriting if needed
 
-### ✅ **Admin Panel (manage-imei.php)**
-- Access the admin panel to update or delete IMEI records manually.
-- Requires login credentials (handled in `login.php`).
+## 💻 Usage
 
----
+### For Users
+1. Visit the homepage
+2. Use the navigation menu to:
+   - Check IMEI status
+   - Report lost/found devices
+   - View all records
+   - Access additional information
+
+### For Administrators
+1. Access the records page to manage all entries
+2. Use the search and filter functions to find specific records
+3. View detailed information about each device
+4. Monitor system status and usage
 
 ## 🔒 Security Features
-- Basic **input validation** to prevent incorrect IMEI entries
-- **Logging system** (`logger.php`) to track user activity
-- **Security file** (`security.php`) for sanitizing inputs
+
+- Secure database connections using PDO
+- Input validation and sanitization
+- XSS protection
+- CSRF protection
+- Secure password handling
+- Rate limiting on API endpoints
+
+## 📱 Mobile Responsiveness
+
+The system is fully responsive and works on:
+- Desktop computers
+- Tablets
+- Mobile phones
+- Different screen sizes and orientations
+
+## 🔄 API Endpoints
+
+### Available Endpoints
+- `GET /backend/records.php` - Retrieve all IMEI records
+- `POST /backend/report.php` - Report a lost/found device
+- `GET /backend/search.php` - Search for a specific IMEI
+- `POST /backend/update.php` - Update device status
+
+## 🎨 Customization
+
+### Theme Customization
+The system uses CSS variables for easy theme customization:
+```css
+:root {
+    --primary-color: #8B0000;
+    --secondary-color: #800000;
+    --accent-color: #A52A2A;
+    --text-color: #ffffff;
+    --background-color: #1a1a1a;
+    /* ... other variables ... */
+}
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👥 Support
+
+For support, please:
+- Check the documentation
+- Open an issue
+- Contact the development team
+
+## 🔄 Updates and Maintenance
+
+Regular updates include:
+- Security patches
+- Feature additions
+- Bug fixes
+- Performance improvements
+
+## 📊 Database Schema
+
+The system uses the following main tables:
+- `imei_records`: Stores device information
+- `status_history`: Tracks device status changes
+- `user_reports`: Stores user reports
+
+## 🎯 Future Enhancements
+
+Planned features:
+- User authentication system
+- Mobile app integration
+- Advanced analytics
+- Bulk import/export
+- API rate limiting
+- Enhanced search capabilities
 
 ---
 
-## 🌍 Deployment
-To deploy Eclipse IMEI:
-1. Upload the `backend/` and `frontend/` folders to your web server
-2. Ensure PHP is enabled on your hosting
-3. Update `config.js` with the correct server URL
-
----
-
-## ✉ Contact
-For support or suggestions, reach out via:
-- ✉ Email: `support@eclipse-imei.com`
-- GitHub Issues: [Report an Issue](https://github.com/yourusername/Eclipse-IMEI/issues)
-
----
-
-## ⚖️ License
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
-
----
-
-💪 Built with passion for helping people recover lost devices! 🚀
-
+Made with ❤️ by the Eclipse IMEI Team
