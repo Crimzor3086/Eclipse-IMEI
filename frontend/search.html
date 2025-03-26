@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search IMEI - Eclipse IMEI</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Search IMEI Status</h1>
+        <p>Check if a device is reported as Lost or Found.</p>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <h2>Enter IMEI Number</h2>
+            <form id="search-form">
+                <label for="imei">IMEI Number:</label>
+                <input type="text" id="imei" name="imei" required placeholder="Enter 15-digit IMEI">
+                <button type="submit">Check Status</button>
+            </form>
+
+            <div id="imei-result" class="imei-status" style="display:none;">
+                <p><strong>Status:</strong> <span id="status"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eclipse IMEI. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let imei = document.getElementById('imei').value.trim();
+            
+            if (!/^\d{15}$/.test(imei)) {
+                alert("Invalid IMEI format. Must be 15 digits.");
+                return;
+            }
+
+            fetch(`backend/check_imei.php?imei=${imei}`)
+                .then(response => response.json())
+                .then(data => {
+                    let resultDiv = document.getElementById('imei-result');
+                    let statusSpan = document.getElementById('status');
+
+                    if (data.error) {
+                        statusSpan.innerText = "Not Found";
+                        resultDiv.classList.add("status-lost");
+                    } else {
+                        statusSpan.innerText = data.status;
+                        resultDiv.className = data.status === "Lost" ? "imei-status status-lost" : "imei-status status-found";
+                    }
+
+                    resultDiv.style.display = "block";
+                })
+                .catch(error => {
+                    console.error("Error fetching IMEI data:", error);
+                });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Eclipse IMEI</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+        <p>We're here to help! Reach out with any questions or concerns.</p>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>If you have any inquiries, issues, or need assistance, feel free to contact us using the form below.</p>
+        </section>
+
+        <section class="contact-form">
+            <form action="backend/contact_form_handler.php" method="post">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section class="contact-info">
+            <h2>Other Ways to Reach Us</h2>
+            <p>Email: <a href="mailto:support@eclipseimei.com">support@eclipseimei.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Address: 123 Eclipse Street, Cyber City</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eclipse IMEI. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

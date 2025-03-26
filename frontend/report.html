@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost or Found Device - Eclipse IMEI</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Report Lost or Found Device</h1>
+        <p>Help others by reporting lost or recovered devices.</p>
+    </header>
+
+    <main>
+        <section class="report-section">
+            <h2>Report a Device</h2>
+            <p>Enter the IMEI number and select the status of the device.</p>
+
+            <form action="backend/report_imei.php" method="post">
+                <label for="imei">IMEI Number:</label>
+                <input type="text" id="imei" name="imei" required placeholder="Enter 15-digit IMEI">
+
+                <label for="status">Device Status:</label>
+                <select id="status" name="status" required>
+                    <option value="Lost">Lost</option>
+                    <option value="Found">Found</option>
+                </select>
+
+                <button type="submit">Submit Report</button>
+            </form>
+        </section>
+
+        <section class="imei-info">
+            <h2>What is an IMEI Number?</h2>
+            <p>The IMEI (International Mobile Equipment Identity) is a unique 15-digit number that identifies your mobile device. You can find it by dialing <strong>*#06#</strong> on your phone.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eclipse IMEI. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

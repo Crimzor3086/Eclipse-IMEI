@@ -1,0 +1,30 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Block direct access to backend files
+RewriteCond %{REQUEST_URI} ^/backend/ [NC]
+RewriteRule .* - [F,L]
+
+# Hide PHP file extensions (e.g., /check_imei instead of /check_imei.php)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Enable Pretty URLs for API Endpoints
+RewriteRule ^check_imei/([0-9]+)$ backend/api/check_imei.php?imei=$1 [L]
+RewriteRule ^report_imei$ backend/api/report_imei.php [L]
+RewriteRule ^get_imei_list$ backend/api/get_imei_list.php [L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "\.(sql|csv|json|ini|log|sh)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Allow CORS for API access (optional, if frontend is separate)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
