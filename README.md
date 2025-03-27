@@ -44,7 +44,7 @@ Eclipse IMEI is a comprehensive device tracking system that allows users to repo
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/eclipse-imei.git
+   git clone https://github.com/Crimzor3086/Eclipse-IMEI.git
    cd eclipse-imei
    ```
 
